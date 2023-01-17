@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Aa fluvius - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- import Mapbox library -->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  
+  <!-- Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="dropdown">
+        <button class="bi bi-list" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">   
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="index.html">Home</a></li>
+          <li><a class="dropdown-item" href="view.html">View</a></li>
+        </ul>
+      </div><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div  class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">  
+    </div>
+    <div id='map'></div>
+  </section><!-- End Hero -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+ 
+        <!-- map script -->
+        <script>
+          mapboxgl.accessToken = "pk.{}";//replace mapboxgl.accessToken
+          var map = new mapboxgl.Map({
+            container: 'map',
+            style: '{}',//replace mapbox style
+            center: [25.70668, 57.15000],
+            zoom: 10.7
+          });
+      
+         map.on('load', function() {
+          var fs = [
+          {
+            //label 1
+            file: "works-details1.html",
+            lon: 25.66628,    
+            lat: 57.19000
+          },
+          {
+            //label 2
+            file: "works-details2.html",
+            lon: 25.74210,   
+            lat: 57.17000
+          },
+          {
+            //label 3
+            file: "works-details3.html",
+            lon: 25.66582,  
+            lat: 57.15500
+          },
+          {
+            //label 4
+            file: "works-details4.html",
+            lon: 25.71433, 
+            lat: 57.15500
+          },
+          {
+            //label 5
+            file: "works-details5.html",
+            lon: 25.7111,
+            lat: 57.0900
+          }, {
+            //label 6
+            file: "works-details6.html",
+            lon: 25.73919,
+            lat: 57.09100
+          }];
+          fs.forEach(p => {
+            let el = document.createElement('a')
+            el.href = p.file
+            el.target = '_self'
+            el.className = 'p-marker'
+            let marker = new mapboxgl.Marker(el).setLngLat([p.lon, p.lat]).setOffset([0, -30]).addTo(map)
+          })
+        })
+        // Add zoom and rotation controls to the map.
+        const nav = new mapboxgl.NavigationControl();
+        map.addControl(nav, 'bottom-right');
+        </script>
+  </body>
+</html>
